@@ -8,17 +8,20 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+import java.util.ArrayList;
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode prev=null;
-        ListNode curr=head;
-        ListNode next=null;
-        while(curr!=null){
-            next=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=next;
-        }
-        return prev;
+       ArrayList<Integer>list=new ArrayList<>();
+       ListNode curr=head;
+       while(curr!=null){
+        list.add(curr.val);
+        curr=curr.next;
+       }
+       curr=head;
+       for(int i=list.size()-1;i>=0;i--){
+        curr.val=list.get(i);
+        curr=curr.next;
+       }
+       return head;
     }
 }
